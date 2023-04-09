@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/styles.css" />
+    
+  </head>
+
+  <body>
+    
+    <div class="container-fluid pantalla" id="pantalla1">
+      <div class="inicio">
+        <div class="empezar">
+          <p class="titulo">TIC TAC TOE</p>
+          <button class="boton" onclick="cambiarVentas('pantalla2')">
+            <span class="boton__content">Empezar a Jugar</span>
+            <span class="boton__glitch"></span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container-fluid none pantalla" id="pantalla2">
+      <div class="row header"></div>
+      <div class="row screen justify-content-center">
+        <div class="col-3 red m-1 first-box direction justify-content-center" >Player vs Player
+          <div class="start" >
+            <input type="text" class="place m-1" id="nombreJugador1" placeholder="player uno"  onchange="nombreJugadores()" />
+            <input type="text" class="place m-1" id="nombreJugador2" placeholder="player dos" onchange="nombreJugadores()"/>
+          </div>
+          <div class="col-1">
+            <button class="boton" disabled onclick="cambiarVentas('pantalla3')"></button>
+          </div>
+        </div>
+        <div class="col-3 red m-1 first-box direction justify-content-center" > Player vs CPU
+          <div class="start" >
+            <input type="text" class="place m-2" id="nombreJugador1" placeholder="uno"  onchange="nombreJugadores()" />
+            maquina
+          </div>
+          <div class="col-1">
+            <button class="boton" disabled onclick="cambiarVentas('pantalla3')"></button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="container-fluid none pantalla" id="pantalla3">
+      <div class="row filling "></div>
+      <div class="row header justify-content-center hola">
+        <div class="col-1 m-1 player" id="host1" onclick="">
+        <h1></h1></div>
+
+        <div class="col-1 m-1 yellow" id="box1" onclick="movementia('#box1',0,0)"></div>
+        <div class="col-1 m-1 yellow" id="box2" onclick="movementia('#box2',0,1)"></div>
+        <div class="col-1 m-1 yellow" id="box3" onclick="movementia('#box3',0,2)"></div>
+
+        <div class="col-1 m-1 player" id="host2" onclick="">
+        </div>
+      </div>
+      <div class="row header justify-content-center hola">
+        <div class="col-1 m-1 yellow" id="box4"  onclick="movementia('#box4',1,0)"></div>
+        <div class="col-1 m-1 yellow" id="box5"  onclick="movementia('#box5',1,1)"></div>
+        <div class="col-1 m-1 yellow" id="box6"  onclick="movementia('#box6',1,2)"></div>
+      </div>
+      <div class="row header justify-content-center hola  ">
+        <div class="col-1 m-1 yellow" id="box7" onclick="movementia('#box7',2,0)"></div>
+        <div class="col-1 m-1 yellow" id="box8"  onclick="movementia('#box8',2,1)"></div>
+        <div class="col-1 m-1 yellow" id="box9"  onclick="movementia('#box9',2,2)"></div>
+      </div>
+      <div class="row justify-content-center m-1">
+        <div class="col-1 m-1 bot" id="contadorJugador1"></div>
+        <div class="col-1 m-1 bot" id="ganador"></div>
+        <div class="col-1 m-1 bot" id="contadorJugador2"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 bot" onclick="cambiarVentas('pantalla4')"></div>
+      </div>
+    </div>
+
+    <div class="container-fluid pantalla none" id="pantalla4">
+      <div class="row ceil"></div>
+      <div class="row justify-content-center">
+        <div class="col-3 winner"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 new m-1" onclick="cambiarVentas('pantalla1')"></div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<!-- CAMBIAR Y VER QUE ES HOLA VARIABLE, LAS ID BOX -->
