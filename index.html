@@ -14,7 +14,7 @@
 
   <body>
     
-    <div class="container-fluid pantalla" id="pantalla1">
+    <div class="container-fluid none pantalla" id="pantalla1">
       <div class="inicio">
         <div class="empezar">
           <p class="titulo">TIC TAC TOE</p>
@@ -23,35 +23,47 @@
             <span class="boton__glitch"></span>
           </button>
         </div>
+      </div>
+    </div>
 
+    <div class="container-fluid pantalla" id="pantalla2" >
+
+      <div class="contenedorJugadores">
+        <label for="jugador1">Jugador 1:</label>
+        <input type="text" id="jugador1" placeholder="Nombre.." name="jugador1"><br><br>
+      
+        <label for="jugador2">Jugador 2:</label>
+        <input type="text" id="jugador2" placeholder="Nombre.." name="jugador2"><br><br>
+      
+        <label for="vsCPU">Jugar contra la CPU:</label>
+        <input type="checkbox" id="vsCPU" name="opponent" value="CPU" onclick="deselectVsCPU()"><br><br>
+      
+        <button class="boton" onclick="cambiarVentas('pantalla3')">
+          <span class="boton__content">Empezar a Jugar</span>
+          <span class="boton__glitch"></span>
+        </button>
       </div>
 
     </div>
+    
 
-    <div class="container-fluid none pantalla" id="pantalla2">
-      <div class="row header"></div>
-      <div class="row screen justify-content-center">
-        <div class="col-3 red m-1 first-box direction justify-content-center" >Player vs Player
-          <div class="start" >
+    <!-- <div class="container-fluid pantalla" id="pantalla2">
+      <div class="contenedorJugadores">
+        <div class="col-3 red m-1 first-box direction justify-content-center " >Player vs Player
+          <div class="nombreJugadores" >
             <input type="text" class="place m-1" id="nombreJugador1" placeholder="player uno"  onchange="nombreJugadores()" />
             <input type="text" class="place m-1" id="nombreJugador2" placeholder="player dos" onchange="nombreJugadores()"/>
           </div>
           <div class="col-1">
-            <button class="boton" disabled onclick="cambiarVentas('pantalla3')"></button>
-          </div>
-        </div>
-        <div class="col-3 red m-1 first-box direction justify-content-center" > Player vs CPU
-          <div class="start" >
-            <input type="text" class="place m-2" id="nombreJugador1" placeholder="uno"  onchange="nombreJugadores()" />
-            maquina
-          </div>
-          <div class="col-1">
-            <button class="boton" disabled onclick="cambiarVentas('pantalla3')"></button>
+            <button class="boton" onclick="cambiarVentas('pantalla3')"></button>
           </div>
         </div>
       </div>
+      </div>
+      <div class="row screen justify-content-center"> 
+
       
-    </div>
+    </div> -->
 
     <div class="container-fluid none pantalla" id="pantalla3">
       <div class="row filling "></div>

@@ -18,6 +18,8 @@ const cambiarVentas = (id) => {
     idPantalla.classList.remove("none");
 };
 
+
+
 const comprobarPosicionGanadora = () => {
 
     for (let i = 0; i < tablero.length; i++) {

@@ -13,9 +13,10 @@
     --white-color: #fafafa;
 }
 
-html,
 body {
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
     background-color: rgb(232, 255, 21);
@@ -43,12 +44,12 @@ body {
 .titulo {
     font-size: 3em;
     font-family: cyberpunk;
-    
+
 }
 
 .boton {
-    width: 230px;
-    height: 60px;
+    width: 15em;
+    height: 4em;
     border: 0;
     outline: none;
     background-color: var(--black-color);
@@ -98,7 +99,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--red-color);    
+    background-color: var(--red-color);
     filter: drop-shadow(-2px 3px #67e3f3) drop-shadow(-1px -3px #02d8f3) drop-shadow(2px 1px #02d8f3);
 }
 
@@ -229,10 +230,7 @@ body {
     display: none;
 }
 
-.header {
-    height: 8em;
 
-}
 
 /* Poner nombre */
 .first-box {
@@ -251,15 +249,23 @@ body {
 }
 
 /* div contiene jugadores */
-.start {
-    width: 80%;
-    height: 30%;
-    background-color: rgb(34, 141, 218);
+
+
+.contenedorJugadores {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 1em;
+    width: 20em;
+    margin-left: 30em;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(231, 233, 108);
+}
+
+
+label, ::placeholder{
+    font-family: cyberpunk;
 }
 
 .place {
@@ -293,6 +299,10 @@ body {
     background-color: rgb(34, 141, 218);
     font-family: 'Anton', sans-serif;
     ;
+}
+
+.espacioSuperior {
+    height: 5em;
 }
 
 /* cuandros de tablero */
