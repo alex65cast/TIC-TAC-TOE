@@ -14,11 +14,12 @@
 
   <body>
     
+    <!-- Pantalla principal la cual empieza el juego,contiene un titulo y un boton -->
     <div class="container-fluid pantalla" id="pantalla1">
       <div class="inicio">
         <div class="empezar">
           <p class="titulo">TIC TAC TOE</p>
-          <button class="boton" onclick="cambiarVentas('pantalla2')">
+          <button class="boton" onclick="cambiarVentanas('pantalla2')">
             <span class="boton__content">Empezar a Jugar</span>
             <span class="boton__glitch"></span>
           </button>
@@ -26,8 +27,8 @@
       </div>
     </div>
 
+    <!-- Pantalla secundaria que se encarga de recoger los nombres y si vas a jugar o no con la CPU -->
     <div class="container-fluid none pantalla" id="pantalla2" >
-
       <div class="contenedorJugadores">
         <label for="jugador1">Jugador 1:</label>
         <input type="text" id="jugador1" placeholder="Nombre.." name="jugador1" onchange="nombreJugadores()"><br><br>
@@ -38,14 +39,14 @@
         <label for="vsCPU">Contra CPU:</label>
         <input type="checkbox" id="vsCPU" name="opponent" value="CPU" onclick="cpuSeleccionada()"><br><br>
       
-        <button class="boton" onclick="cambiarVentas('pantalla3')">
+        <button class="boton" onclick="cambiarVentanas('pantalla3')">
           <span class="boton__content">Empezar a Jugar</span>
           <span class="boton__glitch"></span>
         </button>
       </div>
-
     </div>
 
+    <!-- Pantalla 3 contiene el tablero con dos div que recogen de la pantalla anterior el nombre además del contador de turnos -->
     <div class="container-fluid none pantalla " id="pantalla3">
       <div class="tablero">
         <div id="cajaJugador1">
@@ -54,7 +55,7 @@
           <p>Turnos:</p>
           <p id="contadorJugador1"></p>
         </div>
-        <div class="board">
+        <div class="filasColumas">
           <p class="titulo" style="font-size: 2em;">TIC TAC TOE</p>
           <div class="columnas">
             <div class="celdas fichas" id="box1" onclick="colocarFichas('#box1',0,0)"></div>
@@ -81,12 +82,12 @@
       </div>
     </div>
         
-
+    <!-- Pantalla 4 esta es la parte final, la cual hace ver quien ha ganado la partida en el tic tac toe -->
     <div class="container-fluid none pantalla" id="pantalla4">
       <div class="pantallaFinal">
         <p>!!!HA GANADO EL JUGADOR¡¡¡:</p>
         <p id="ganador"></p>
-        <button class="boton" onclick="cambiarVentas('pantalla1')">
+        <button class="boton" onclick="cambiarVentanas('pantalla1')">
           <span class="boton__content">Jugar de Nuevo</span>
           <span class="boton__glitch"></span>
         </button>
