@@ -14,7 +14,7 @@
 
   <body>
     
-    <div class="container-fluid none pantalla" id="pantalla1">
+    <div class="container-fluid pantalla" id="pantalla1">
       <div class="inicio">
         <div class="empezar">
           <p class="titulo">TIC TAC TOE</p>
@@ -35,8 +35,8 @@
         <label for="jugador2">Jugador 2:</label>
         <input type="text" id="jugador2" placeholder="Nombre.." name="jugador2" onchange="nombreJugadores()"><br><br>
       
-        <label for="vsCPU">Jugar contra la CPU:</label>
-        <input type="checkbox" id="vsCPU" name="opponent" value="CPU" onclick="deselectVsCPU()"><br><br>
+        <label for="vsCPU">Contra CPU:</label>
+        <input type="checkbox" id="vsCPU" name="opponent" value="CPU" onclick="cpuSeleccionada()"><br><br>
       
         <button class="boton" onclick="cambiarVentas('pantalla3')">
           <span class="boton__content">Empezar a Jugar</span>
@@ -48,7 +48,6 @@
 
     <div class="container-fluid none pantalla " id="pantalla3">
       <div class="tablero">
-
         <div id="cajaJugador1">
           <p>Jugador 1:</p>
           <p id="nJugador1"></p>
@@ -58,19 +57,19 @@
         <div class="board">
           <p class="titulo" style="font-size: 2em;">TIC TAC TOE</p>
           <div class="columnas">
-            <div class="celdas fichas" id="box1" onclick="movementia('#box1',0,0)"></div>
-            <div class="celdas fichas" id="box2" onclick="movementia('#box2',0,1)"></div>
-            <div class="celdas fichas" id="box3" onclick="movementia('#box3',0,2)"></div>
+            <div class="celdas fichas" id="box1" onclick="colocarFichas('#box1',0,0)"></div>
+            <div class="celdas fichas" id="box2" onclick="colocarFichas('#box2',0,1)"></div>
+            <div class="celdas fichas" id="box3" onclick="colocarFichas('#box3',0,2)"></div>
           </div>
           <div class="columnas">
-            <div class="celdas fichas" id="box4" onclick="movementia('#box4',1,0)"></div>
-            <div class="celdas fichas" id="box5" onclick="movementia('#box5',1,1)"></div>
-            <div class="celdas fichas" id="box6" onclick="movementia('#box6',1,2)"></div>
+            <div class="celdas fichas" id="box4" onclick="colocarFichas('#box4',1,0)"></div>
+            <div class="celdas fichas" id="box5" onclick="colocarFichas('#box5',1,1)"></div>
+            <div class="celdas fichas" id="box6" onclick="colocarFichas('#box6',1,2)"></div>
           </div>
           <div class="columnas">
-            <div class="celdas fichas" id="box7" onclick="movementia('#box7',2,0)"></div>
-            <div class="celdas fichas" id="box8" onclick="movementia('#box8',2,1)"></div>
-            <div class="celdas fichas" id="box9" onclick="movementia('#box9',2,2)"></div>
+            <div class="celdas fichas" id="box7" onclick="colocarFichas('#box7',2,0)"></div>
+            <div class="celdas fichas" id="box8" onclick="colocarFichas('#box8',2,1)"></div>
+            <div class="celdas fichas" id="box9" onclick="colocarFichas('#box9',2,2)"></div>
           </div>
         </div>
         <div id="cajaJugador2">
@@ -78,20 +77,19 @@
           <p id="nJugador2"></p>
           <p>Turnos:</p>
           <p id="contadorJugador2"></p>
-        </div>
-        
+        </div> 
+      </div>
     </div>
-
-      </div>
         
 
-    <div class="container-fluid pantalla" id="pantalla4">
-      <div class="row ceil"></div>
-      <div class="row justify-content-center">
-        <div class="col-3 winner"></div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-1 new m-1" onclick="cambiarVentas('pantalla1')"></div>
+    <div class="container-fluid none pantalla" id="pantalla4">
+      <div class="pantallaFinal">
+        <p>!!!HA GANADO EL JUGADOR¡¡¡:</p>
+        <p id="ganador"></p>
+        <button class="boton" onclick="cambiarVentas('pantalla1')">
+          <span class="boton__content">Jugar de Nuevo</span>
+          <span class="boton__glitch"></span>
+        </button>
       </div>
     </div>
 

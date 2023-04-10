@@ -3,6 +3,8 @@ const tablero = [["", "", ""], ["", "", ""], ["", "", ""]];
 let jugadorActual = "X";
 let turnosJugador1 = 3;
 let turnosJugador2 = 3;
+let nombreJugador1;
+let nombreJugador2;
 
 
 const cambiarVentas = (id) => {
@@ -16,6 +18,8 @@ const cambiarVentas = (id) => {
     }
 
     idPantalla.classList.remove("none");
+
+    limpiar();
 };
 
 
@@ -51,11 +55,11 @@ const comprobarPosicionGanadora = () => {
 
 const nombreJugadores = () => {
 
-    const nombreJugador1 = document.querySelector("#jugador1").value;
-    const nombreJugador2 = document.querySelector("#jugador2").value;
+    nombreJugador1 = document.querySelector("#jugador1").value;
+    nombreJugador2 = document.querySelector("#jugador2").value;
 
-    jug1 = document.getElementById("nJugador1").innerHTML = nombreJugador1;
-    jug2 = document.getElementById("nJugador2").innerHTML = nombreJugador2;
+    document.getElementById("nJugador1").innerHTML = nombreJugador1;
+    document.getElementById("nJugador2").innerHTML = nombreJugador2;
 };
 
 const contadorTurnos = () => {
@@ -106,120 +110,170 @@ const informacionTurnosJugadores = () => {
     }
 };
 
-// const colocarFichas = (id, fila, columna) => {
+const cpuSeleccionada = () =>{
 
-//     const casillaTablero = document.querySelector(id);
-//     let infoTurnosJugador = informacionTurnosJugadores();
-//     let comprobar = comprobarPosicionGanadora();
+  const checkbox = document.querySelector('#vsCPU');
+  if (checkbox.checked) {
+    console.log('El checkbox está marcado');
+    return true;
+  } else {
+    return false;
+    console.log('El checkbox no está marcado');
+    
+  }
 
-//     if (infoTurnosJugador > 0) {
+}
 
-//         if (casillaTablero.innerHTML == "" && casillaTablero.innerHTML !== jugadorActual) {
+const colocarFichas = (id, fila, columna) => {
+      const casillaTablero = document.querySelector(id);
+      let infoTurnosJugador = informacionTurnosJugadores();
+      let comprobar = comprobarPosicionGanadora();
 
-//             comprobarPosicionGanadora();
-//             casillaTablero.innerHTML = jugadorActual;
-//             tablero[fila][columna] = jugadorActual;
-//             // makeAIMove();
+    let seleccionadoCPU = cpuSeleccionada();
+    console.log(seleccionadoCPU);
 
-//             if (comprobar) {
-//                 alert('Ha ganado')
-//             }
+    if(seleccionadoCPU == false){
+      
+      if (infoTurnosJugador > 0) {
 
-//             turnosJugadores();
-//         }
+        if (casillaTablero.innerHTML == "" && casillaTablero.innerHTML !== jugadorActual) {
 
-//         jugadorActual == "X" ? (jugadorActual = "O") : (jugadorActual = "X");
+            comprobarPosicionGanadora();
+            casillaTablero.innerHTML = jugadorActual;
+            tablero[fila][columna] = jugadorActual;
+            let check = comprobarPosicionGanadora();
 
-//     } else {
+            if (check) {
+              document.querySelector("#pantalla3").classList.add("none");
+              document.querySelector("#pantalla4").classList.remove("none");
+    
+              if(check == "X"){
+                document.querySelector("#ganador").innerHTML = nombreJugador1;
+              }
+              else{
+                document.querySelector("#ganador").innerHTML = nombreJugador2;
+              }
+            }
 
-//         if (casillaTablero.innerHTML !== "" && casillaTablero.innerHTML == jugadorActual) {
+            turnosJugadores();
+        }
 
-//             casillaTablero.innerHTML = "";
-//             turnosJugadores();
-//         }
-//     }
+        jugadorActual == "X" ? (jugadorActual = "O") : (jugadorActual = "X");
+
+    } 
+      else {
+
+          if (casillaTablero.innerHTML !== "" && casillaTablero.innerHTML == jugadorActual) {
+
+              casillaTablero.innerHTML = "";
+              turnosJugadores();
+          }
+      }
+
+    }
+    if(seleccionadoCPU==true){
+
+      if (infoTurnosJugador > 0) {
+        if (casillaTablero.innerHTML == "" && casillaTablero.innerHTML !== jugadorActual) {
+          casillaTablero.innerHTML = jugadorActual;
+          tablero[fila][columna] = jugadorActual;
+          let check = comprobarPosicionGanadora();
+          setTimeout(()=>{generateRandomPosition()},500);
+  
+          if (check) {
+            document.querySelector("#pantalla3").classList.add("none");
+            document.querySelector("#pantalla4").classList.remove("none");
+  
+            if(check == "X"){
+              document.querySelector("#ganador").innerHTML = nombreJugador1;
+            }
+            else{
+              document.querySelector("#ganador").innerHTML = nombreJugador2;
+            }
+          }
+          
+          turnosJugadores();
+        }
+      } else {
+        if (
+          casillaTablero.innerHTML !== "" &&
+          casillaTablero.innerHTML == jugadorActual
+        ) {
+          casillaTablero.innerHTML = "";
+          turnosJugadores();
+        }
+      }
+
+
+    }
 
     
-// };
-
-const movementia = (id, row, colum) => {
-
-    const casillaTablero = document.querySelector(id);
-    let infoplayer = informacionTurnosJugadores();
-    if (infoplayer > 0) {
-      if (
-        casillaTablero.innerHTML == "" &&
-        casillaTablero.innerHTML !== jugadorActual
-      ) {
-        casillaTablero.innerHTML = jugadorActual;
-        tablero[row][colum] = jugadorActual;
-        let check = comprobarPosicionGanadora();
-
-       
-        generateRandomPosition();
-        if (check) {
-          alert(`ganador `);
-          return;
-        }
-        
-        turnosJugadores();
-      }
-    } else {
-      if (
-        casillaTablero.innerHTML !== "" &&
-        casillaTablero.innerHTML == jugadorActual
-      ) {
-        casillaTablero.innerHTML = "";
-        turnosJugadores();
-      }
-    }
-  };
-
+};
 
 const generateRandomPosition = () => {
-    if(turnosJugador2>0)
-    {const chipMovement = document.querySelectorAll(".fichas");
-    const na = [];
-    let row, col;
-    for (let i = 0; i < chipMovement.length; i++) {
-      na.push(chipMovement[i]);
-    }
-    let twoDimensionalArr = [];
-    for (let i = 0; i < 3; i++) {
-      twoDimensionalArr.push(na.slice(i * 3, (i + 1) * 3));
-    }
-    do {
-      row = Math.floor(Math.random() * 3);
-      col = Math.floor(Math.random() * 3);
-    } while (tablero[row][col] !== "");
-    tablero[row][col] = "O";
-    twoDimensionalArr[row][col].innerHTML = "O";
-    turnosJugador2--;
+  const casillaTablero = document.querySelectorAll(".fichas");
+  const arayNuevo = [];
+  let arrayBidimensional = [];
+  let filas;
+  let columnas;
+    if(turnosJugador2>0){
+      for (let i = 0; i < casillaTablero.length; i++) {
+        arayNuevo.push(casillaTablero[i]);
+      }
+      for (let i = 0; i < 3; i++) {
+        arrayBidimensional.push(arayNuevo.slice(i * 3, (i + 1) * 3));
+      }
+      do {
+        filas = Math.floor(Math.random() * 3);
+        columnas = Math.floor(Math.random() * 3);
+      } while (tablero[filas][columnas] !== "");
+      tablero[filas][columnas] = "O";
+      arrayBidimensional[filas][columnas].innerHTML = "O";
+      turnosJugador2--;
     }
     else{
-      const chipMovement = document.querySelectorAll(".fichas");
-      const na = [];
-      let row, col;
-      for (let i = 0; i < chipMovement.length; i++) {
-        na.push(chipMovement[i]);
+      for (let i = 0; i < casillaTablero.length; i++) {
+        arayNuevo.push(casillaTablero[i]);
       }
-      let twoDimensionalArr = [];
+      let arrayBidimensional = [];
       for (let i = 0; i < 3; i++) {
-        twoDimensionalArr.push(na.slice(i * 3, (i + 1) * 3));
+        arrayBidimensional.push(arayNuevo.slice(i * 3, (i + 1) * 3));
       }
-    console.log(twoDimensionalArr)
+    console.log(arrayBidimensional)
       do {
-        row = Math.floor(Math.random() * 3);
-        col = Math.floor(Math.random() * 3);
-      } while (tablero[row][col] !== "O");
-      tablero[row][col] = "";
-      twoDimensionalArr[row][col].innerHTML = "";
+        filas = Math.floor(Math.random() * 3);
+        columnas = Math.floor(Math.random() * 3);
+      } while (tablero[filas][columnas] !== "O");
+      tablero[filas][columnas] = "";
+      arrayBidimensional[filas][columnas].innerHTML = "";
       turnosJugador2++
     generateRandomPosition()
     }
   }
 
+const limpiar = ()=>{
 
+  turnosJugador1 = 3;
+  turnosJugador2 = 3;
+  
+  let borrar = document.querySelectorAll(".fichas");
+
+  borrar.forEach((e)=>{
+
+    e.innerHTML = "";
+  });
+
+  for (let i = 0; i < tablero.length; i++) {
+    
+    for (let x = 0; x < tablero.length; x++) {
+
+        tablero[i][x] = "";
+    }
+    
+  }
+
+  contadorTurnos();
+};
 
 
 
