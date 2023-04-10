@@ -264,7 +264,8 @@ body {
 }
 
 
-label, ::placeholder{
+label,
+::placeholder {
     font-family: cyberpunk;
 }
 
@@ -284,11 +285,6 @@ label, ::placeholder{
     color: rgb(254, 254, 254);
 }
 
-.hola {
-    text-align: center;
-    color: rgb(70, 198, 221);
-
-}
 
 .direction {
     flex-direction: column;
@@ -306,12 +302,12 @@ label, ::placeholder{
 }
 
 /* cuandros de tablero */
-.yellow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.916);
+
+.fichas {
+
+    color: #050a0e;
     font-size: 2em;
+    font-family: cyberpunk;
 }
 
 /* donde estan los jugadores en el tablero */
@@ -325,13 +321,78 @@ label, ::placeholder{
     border-radius: 5%;
 }
 
-/* tamaño de un div */
+.tablero{
 
-.filling {
-    height: 8em;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    width: 70em;
+    height: 30em;
 }
 
+#cajaJugador1{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 11em; 
+    margin-bottom: 3em;
+    background-color: #e9ecee;
+    border: 1px solid black;
+    height: 11em;
+    width: 8em;
+    border-radius: 8%;
+    font-family: cyberpunk;
+}
+
+#cajaJugador2{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 3em; 
+    background-color: #e9ecee;
+    border: 1px solid black;
+    height: 11em;
+    width: 8em;
+    border-radius: 8%;
+    font-family: cyberpunk;
+
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+}
+
+
+
+.columnas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.celdas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3em;
+    height: 3em;
+    margin: 1px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.celdas:hover{
+    background-color: rgb(230, 230, 230);
+}
 /* Turnos y quien juega */
 .bot {
     height: 2em;

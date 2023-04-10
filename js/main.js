@@ -51,17 +51,18 @@ const comprobarPosicionGanadora = () => {
 
 const nombreJugadores = () => {
 
-    const nombreJugador1 = document.getElementById("nombreJugador1").value;
-    const nombreJugador2 = document.getElementById("nombreJugador2").value;
+    const nombreJugador1 = document.querySelector("#jugador1").value;
+    const nombreJugador2 = document.querySelector("#jugador2").value;
 
-    if (nombreJugador1 == "" && nombreJugador2 == "") {
-        document.querySelector(".boton").disabled = true;
-    } else {
-        document.querySelector(".boton").disabled = false;
-    }
+    jug1 = document.getElementById("nJugador1").innerHTML = nombreJugador1;
+    jug2 = document.getElementById("nJugador2").innerHTML = nombreJugador2;
+};
 
-    place1 = document.getElementById("host1").innerHTML = nombreJugador1;
-    place2 = document.getElementById("host2").innerHTML = nombreJugador2;
+const contadorTurnos = () => {
+
+  document.getElementById("contadorJugador1").innerHTML = turnosJugador1;
+  document.getElementById("contadorJugador2").innerHTML = turnosJugador2;
+
 };
 
 const turnosJugadores = () => {
@@ -174,21 +175,10 @@ const movementia = (id, row, colum) => {
     }
   };
 
-const contadorTurnos = () => {
-
-    document.getElementById("contadorJugador1").innerHTML = turnosJugador1;
-    document.getElementById("contadorJugador2").innerHTML = turnosJugador2;
-
-};
-
-
-
-
-
 
 const generateRandomPosition = () => {
     if(turnosJugador2>0)
-    {const chipMovement = document.querySelectorAll(".yellow");
+    {const chipMovement = document.querySelectorAll(".fichas");
     const na = [];
     let row, col;
     for (let i = 0; i < chipMovement.length; i++) {
@@ -207,7 +197,7 @@ const generateRandomPosition = () => {
     turnosJugador2--;
     }
     else{
-      const chipMovement = document.querySelectorAll(".yellow");
+      const chipMovement = document.querySelectorAll(".fichas");
       const na = [];
       let row, col;
       for (let i = 0; i < chipMovement.length; i++) {
