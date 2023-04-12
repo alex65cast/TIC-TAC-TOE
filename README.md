@@ -2,7 +2,7 @@
 
 Se ha realizado un proyecto de un Tic Tac Toe con HTML, CSS y JavaScript
 
-Para ver como es pulsa en este enlace: https://alex65cast.github.io/Proyecto-Semana2-Restaurante/index.html
+Para ver como es pulsa en este enlace: https://alex65cast.github.io/TIC-TAC-TOE/
 
 ## Herramientas 🚀
 
