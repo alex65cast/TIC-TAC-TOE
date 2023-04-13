@@ -13,6 +13,7 @@ const cambiarVentanas = (id) => {
     let pantallas = document.querySelectorAll(".pantalla");
     let idPantalla = document.getElementById(id);
 
+
     for (let i = 0; i < pantallas.length; i++) {
 
         pantallas[i].classList.add("none");
@@ -21,6 +22,33 @@ const cambiarVentanas = (id) => {
     idPantalla.classList.remove("none");
 
     limpiar();
+};
+
+const habilitarBoton = (id) => {
+
+  let pantallas = document.querySelectorAll(".pantalla");
+  let idPantalla = document.getElementById(id);
+
+  nombreJugador1 = document.querySelector("#jugador1").value;
+  nombreJugador2 = document.querySelector("#jugador2").value;
+
+  if(nombreJugador1 == "" || nombreJugador2 == ""){
+
+    alert('Por favor introduzca el nombre de los jugadores que falten');
+
+  }
+  else{
+
+    for (let i = 0; i < pantallas.length; i++) {
+
+      pantallas[i].classList.add("none");
+    }
+
+    idPantalla.classList.remove("none");
+
+  }
+
+
 };
 
 // Funcion que se encanga de recoger los nombres de los inputs y sacarlos a la siguiente ventana
@@ -270,21 +298,26 @@ const colocarFichaRandom = (fila,columna) => {
         }
 
       }else{
+
         if(tablero[filasRandom][columnasRandom] == "" ){
           for (let i = 0; i < casillaTablero.length; i++) {
             arayNuevo.push(casillaTablero[i]);
           }
+
           for (let i = 0; i < 3; i++) {
             arrayBidimensional.push(arayNuevo.slice(i * 3, (i + 1) * 3));
           }
             arrayBidimensional[filasRandom][columnasRandom].innerHTML = "O";
             tablero[filasRandom][columnasRandom] = "O";
             turnosJugador2--;
-        }else{
+        }
+
+        else{
           colocarFichaRandom();
         }
       }
     }
+
     else{
         for (let i = 0; i < casillaTablero.length; i++) {
           arayNuevo.push(casillaTablero[i]);
@@ -311,10 +344,10 @@ const limpiar = ()=>{
   
   let borrar = document.querySelectorAll(".fichas");
 
-  borrar.forEach((e)=>{
-
-    e.innerHTML = "";
-  });
+  for (let i = 0; i < borrar.length; i++) {
+    borrar[i].innerHTML = "";
+    
+  }
 
   for (let i = 0; i < tablero.length; i++) {
     
