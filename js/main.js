@@ -167,8 +167,7 @@ const colocarFichas = (id, fila, columna) => {
       
       if (infoTurnosJugador > 0) {
 
-        if (casillaTablero.innerHTML == "" && casillaTablero.innerHTML !== jugadorActual) {
-
+        if (tablero[fila][columna] == "" && tablero[fila][columna] !== jugadorActual) {
             
             casillaTablero.innerHTML = jugadorActual;
             tablero[fila][columna] = jugadorActual;
@@ -184,18 +183,16 @@ const colocarFichas = (id, fila, columna) => {
                 document.querySelector("#ganador").innerHTML = nombreJugador2;
               }
             }
-            
             turnosJugadores();
+
+            jugadorActual == "X" ? (jugadorActual = "O") : (jugadorActual = "X");
         }
 
-        jugadorActual == "X" ? (jugadorActual = "O") : (jugadorActual = "X");
-
-        
 
     } 
       else {
 
-          if (casillaTablero.innerHTML !== "" && casillaTablero.innerHTML == jugadorActual) {
+          if (tablero[fila][columna] !== "" && tablero[fila][columna] == jugadorActual ) {
 
               casillaTablero.innerHTML = "";
               tablero[fila][columna] = "";
@@ -232,7 +229,7 @@ const colocarFichas = (id, fila, columna) => {
           }
 
         
-          colocarFichaRandom();
+          colocarFichaRandom(fila,columna);
           
 
           if (comprobarPosicionGanadora()) {
@@ -276,6 +273,7 @@ const colocarFichaRandom = (fila,columna) => {
   let arrayBidimensional = [];
   let filasRandom = Math.round(Math.random() * 2);
   let columnasRandom = Math.round(Math.random() * 2);
+  console.log(fila);
 
     if(turnosJugador2>0){
 
