@@ -64,7 +64,7 @@ const nombreJugadores = () => {
 const cpuSeleccionada = () =>{
 
   const checkbox = document.querySelector('#vsCPU');
-  
+
   if (checkbox.checked) {
 
     return true;
@@ -228,11 +228,10 @@ const colocarFichas = (id, fila, columna) => {
               
               document.querySelector("#ganador").innerHTML = nombreJugador2;
             }
+
           }
 
-        
-          colocarFichaRandom(fila,columna);
-          
+          colocarFichaRandom();      
 
           if (comprobarPosicionGanadora()) {
 
@@ -268,7 +267,7 @@ const colocarFichas = (id, fila, columna) => {
 };
 
 // Funcion que se usa para la IA ya que la llamaremos con la CPU para que coloque fichas de manera aleatoria por el tablero
-const colocarFichaRandom = (fila,columna) => {
+const colocarFichaRandom = () => {
 
   let casillaTablero = document.querySelectorAll(".fichas");
   const arayNuevo = [];
@@ -278,9 +277,7 @@ const colocarFichaRandom = (fila,columna) => {
 
     if(turnosJugador2>0){
 
-      if(fila){
-
-        if(tablero[filasRandom][columnasRandom] == "" && filasRandom !== fila && columnasRandom !== columna){
+        if(tablero[filasRandom][columnasRandom] == "" ){
 
           for (let i = 0; i < casillaTablero.length; i++) {
 
@@ -296,34 +293,12 @@ const colocarFichaRandom = (fila,columna) => {
 
         }else{
 
-          colocarFichaRandom(filasRandom,columnasRandom);
-        }
-
-      }else{
-
-        if(tablero[filasRandom][columnasRandom] == "" ){
-
-          for (let i = 0; i < casillaTablero.length; i++) {
-            
-            arayNuevo.push(casillaTablero[i]);
-          }
-
-          for (let i = 0; i < 3; i++) {
-
-            arrayBidimensional.push(arayNuevo.slice(i * 3, (i + 1) * 3));
-          }
-            arrayBidimensional[filasRandom][columnasRandom].innerHTML = "O";
-            tablero[filasRandom][columnasRandom] = "O";
-            turnosJugador2--;
-        }
-
-        else{
           colocarFichaRandom();
         }
-      }
     }
 
     else{
+
         for (let i = 0; i < casillaTablero.length; i++) {
 
           arayNuevo.push(casillaTablero[i]);
@@ -337,10 +312,10 @@ const colocarFichaRandom = (fila,columna) => {
           
           tablero[filasRandom][columnasRandom] = "";
           arrayBidimensional[filasRandom][columnasRandom].innerHTML = "";
-
           turnosJugador2++
         }
-        colocarFichaRandom(filasRandom,columnasRandom);
+        
+        colocarFichaRandom();
     }
   }
 
